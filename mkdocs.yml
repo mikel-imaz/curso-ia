@@ -1,0 +1,54 @@
+# Project information
+site_name: Cursos sobre IA
+site_url: https://mikel-imaz.github.io/curso-ia
+site_author: Mikel Imaz
+site_description: Cursos sobre IA
+
+# Configuration
+theme:
+  name: material
+  features:
+    - navigation.footer
+    - navigation.instant
+
+# Extensions
+markdown_extensions: 
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - pymdownx.blocks.caption
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+# Page tree
+nav:
+  - Cursos: index.md
+  - Agentes de IA, conceptos basicos:
+      - Introducción: agents/agents.md
+      - Fundamentos:
+          - ¿Qué es un agente de IA?: agents/ag11.md
+          - ¿Qué lo hace agentivo?: agents/ag12.md
+          - ¿Cuándo emplear agentes?: agents/ag13.md
+      - Diseño y arquitecturas:
+          - Pensar-Actuar-Observar: agents/ag21.md
+          - El framework React: agents/ag22.md
+          - ¿Qué sucede dentro?: agents/ag23.md
+          - Sistemas multiagente: agents/ag24.md
+      - Desarrollo y uso responsables:
+          - El riesgo y los guardarraíles: agents/ag31.md
+          - Sistemas agentivos en la realidad: agents/ag32.md
