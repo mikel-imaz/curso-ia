@@ -1,0 +1,1100 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Cursos sobre IA">
+      
+      
+        <meta name="author" content="Mikel Imaz">
+      
+      
+        <link rel="canonical" href="https://mikel-imaz.github.io/curso-ia/agents/ag13/">
+      
+      
+        <link rel="prev" href="../ag12/">
+      
+      
+        <link rel="next" href="../ag21/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>¿Cuándo emplear agentes? - Cursos sobre IA</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cuando-emplear-agentes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Cursos sobre IA" class="md-header__button md-logo" aria-label="Cursos sobre IA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cursos sobre IA
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ¿Cuándo emplear agentes?
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Cursos sobre IA" class="md-nav__button md-logo" aria-label="Cursos sobre IA" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Cursos sobre IA
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cursos
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Agentes de IA, conceptos basicos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Agentes de IA, conceptos basicos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introducción
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Fundamentos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Fundamentos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ag11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ¿Qué es un agente de IA?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ag12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ¿Qué lo hace agentivo?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    ¿Cuándo emplear agentes?
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    ¿Cuándo emplear agentes?
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#el-caso-de-dos-equipos-de-soporte-al-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      El caso de dos equipos de soporte al cliente
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="El caso de dos equipos de soporte al cliente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#equipo-de-soporte-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      Equipo de soporte A
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equipo-de-soporte-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      Equipo de soporte B
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuando-emplear-agentes-de-ia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cuándo emplear agentes de IA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecosistema-de-agentes-de-ia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ecosistema de agentes de IA
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ecosistema de agentes de IA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#herramientas-listas-para-usar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Herramientas "listas para usar"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#herramientas-low-codeno-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Herramientas "low-code/no-code"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frameworks-de-desarrollo-de-agentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Frameworks" de desarrollo de agentes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desarrollar-la-solucion-o-comprarla" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desarrollar la solución o comprarla
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Diseño y arquitecturas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Diseño y arquitecturas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ag21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pensar-Actuar-Observar
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ag22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    El framework React
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ag23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ¿Qué sucede dentro?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ag24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sistemas multiagente
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Desarrollo y uso responsables
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Desarrollo y uso responsables
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ag31/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    El riesgo y los guardarraíles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ag32/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sistemas agentivos en la realidad
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#el-caso-de-dos-equipos-de-soporte-al-cliente" class="md-nav__link">
+    <span class="md-ellipsis">
+      El caso de dos equipos de soporte al cliente
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="El caso de dos equipos de soporte al cliente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#equipo-de-soporte-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      Equipo de soporte A
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#equipo-de-soporte-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      Equipo de soporte B
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuando-emplear-agentes-de-ia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cuándo emplear agentes de IA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecosistema-de-agentes-de-ia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ecosistema de agentes de IA
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ecosistema de agentes de IA">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#herramientas-listas-para-usar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Herramientas "listas para usar"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#herramientas-low-codeno-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Herramientas "low-code/no-code"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frameworks-de-desarrollo-de-agentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Frameworks" de desarrollo de agentes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#desarrollar-la-solucion-o-comprarla" class="md-nav__link">
+    <span class="md-ellipsis">
+      Desarrollar la solución o comprarla
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="cuando-emplear-agentes">¿Cuándo emplear agentes?</h1>
+<p>Aunque los agentes pueden ser herramientas muy potentes, no en todos los casos son adecuados, depende de la tarea a realizar. </p>
+<p>¿Cuándo se deberían adoptar sistemas agentivos? ¿Cuándo no?</p>
+<h2 id="el-caso-de-dos-equipos-de-soporte-al-cliente">El caso de dos equipos de soporte al cliente</h2>
+<p>Para poner esto en contexto, imagina dos equipos diferentes de soporte al cliente. Ambos grupos trabajan para empresas del sector del comercio minorista y quieren reforzar sus operaciones con IA.</p>
+<h3 id="equipo-de-soporte-a">Equipo de soporte A</h3>
+<p><img alt="" src="../imgs/ag13_1.jpg" /></p>
+<p>Para el equipo de soporte A, el 80% de los tickets de soporte corresponden a preguntas del tipo:</p>
+<blockquote>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.75 13a1.25 1.25 0 1 1 2.5 0 1.25 1.25 0 0 1-2.5 0M22 12v10H2V12C2 6.5 6.5 2 12 2s10 4.5 10 10M4 12c0 4.41 3.59 8 8 8s8-3.59 8-8c0-.79-.12-1.55-.33-2.26A9.974 9.974 0 0 1 9.26 5.77c-.98 2.39-2.85 4.32-5.21 5.37-.05.28-.05.57-.05.86m5 2.25a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5"/></svg></span>: "¿Cómo rastreo mi pedido?"</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 11.75A1.25 1.25 0 0 0 7.75 13 1.25 1.25 0 0 0 9 14.25 1.25 1.25 0 0 0 10.25 13 1.25 1.25 0 0 0 9 11.75m6 0A1.25 1.25 0 0 0 13.75 13 1.25 1.25 0 0 0 15 14.25 1.25 1.25 0 0 0 16.25 13 1.25 1.25 0 0 0 15 11.75M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 18c-4.41 0-8-3.59-8-8 0-.29 0-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37a9.97 9.97 0 0 0 10.41 3.97c.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8"/></svg></span>: "¿Cómo devuelvo un artículo?"</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.75 13a1.25 1.25 0 1 1 2.5 0 1.25 1.25 0 0 1-2.5 0M22 12v10H2V12C2 6.5 6.5 2 12 2s10 4.5 10 10M4 12c0 4.41 3.59 8 8 8s8-3.59 8-8c0-.79-.12-1.55-.33-2.26A9.974 9.974 0 0 1 9.26 5.77c-.98 2.39-2.85 4.32-5.21 5.37-.05.28-.05.57-.05.86m5 2.25a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5"/></svg></span>: "¿Cómo cambio mi dirección de envío?"</li>
+</ul>
+</blockquote>
+<p>Es decir, el 80% de los tickets que tiene que gestionar el equipo de soporte A tienen en común las siguientes características: </p>
+<ul>
+<li>Requieren una toma de decisiones simple</li>
+<li>No necesitan acceder a los datos ni al historial del cliente</li>
+<li>Las consultas admiten respuestas discretas y predecibles</li>
+</ul>
+<p>En este contexto, el equipo de soporte A <strong>no necesita un agente de IA</strong> y puede optar por un chatbot sencillo que esté preparado para responder a este tipo de preguntas una vez se le haya facilitado el conocimiento necesario. Existen dos posibilidades en este sentido:</p>
+<ol>
+<li>Emplear la ventana de contexto del modelo para facilitarle la documentación con la información, por ejemplo utilizando la técnica <strong>RAG</strong> (Retrieval Augmented Generation).</li>
+<li>Reentrenar el modelo en lo que se llama un ajuste fino (<strong>fine-tuning</strong>) para que adquiera el conocimiento que precisa el caso.</li>
+</ol>
+<h3 id="equipo-de-soporte-b">Equipo de soporte B</h3>
+<p><img alt="" src="../imgs/ag13_2.jpg" /></p>
+<p>Para el equipo de soporte B, el 80% de los tickets corresponden a problemas complejos como por ejemplo:</p>
+<blockquote>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 11.75A1.25 1.25 0 0 0 7.75 13 1.25 1.25 0 0 0 9 14.25 1.25 1.25 0 0 0 10.25 13 1.25 1.25 0 0 0 9 11.75m6 0A1.25 1.25 0 0 0 13.75 13 1.25 1.25 0 0 0 15 14.25 1.25 1.25 0 0 0 16.25 13 1.25 1.25 0 0 0 15 11.75M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 18c-4.41 0-8-3.59-8-8 0-.29 0-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37a9.97 9.97 0 0 0 10.41 3.97c.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8"/></svg></span>: "Me cobraron dos veces, pero un pedido fue cancelado, y tengo crédito de una devolución anterior que no se aplicó correctamente."</li>
+</ul>
+</blockquote>
+<p>Es decir, la mayoría de los tickets del equipo de soporte B tienen en común las siguientes características:</p>
+<ul>
+<li>Requieren una toma de decisiones compleja</li>
+<li>Necesitan acceder a los datos y al historial del cliente</li>
+<li>Las consultas piden soluciones que se adapten al caso en concreto</li>
+</ul>
+<p>El equipo de soporte B sí se beneficiaría de una <strong>solución agentiva</strong> que pueda acceder a los datos del cliente, generar estrategias de resolución, implementarlas y actualizar los sistemas de soporte con ellas.</p>
+<h2 id="cuando-emplear-agentes-de-ia">Cuándo emplear agentes de IA</h2>
+<p>En resumen, se debería contemplar la adopción de soluciones agentivas cuando:</p>
+<ul>
+<li>Los problemas que se intentan resolver requieran una toma de decisiones compleja</li>
+<li>Dependan en gran medida de datos no estructurados</li>
+<li>Tengan reglas difíciles de mantener en todos los casos</li>
+<li>Requieran resolución de problemas adaptativa</li>
+</ul>
+<p>Por ejemplo:</p>
+<ul>
+<li>Sistemas de soporte al cliente como los que necesitaba el equipo B</li>
+<li>Asistentes de programación de sofware que puedan leer módulos de código</li>
+<li>Realizar actualizaciones e implementarlas automáticamente</li>
+<li>Asistentes de investigación avanzada (Deep Research) capaces de descomponer una tarea en diferentes pasos, realizar búsquedas en la web, acceder a sitios de investigación y datos públicos, y sintetizar resultados.</li>
+</ul>
+<h2 id="ecosistema-de-agentes-de-ia">Ecosistema de agentes de IA</h2>
+<p>Una vez identificada la necesidad de emplear un agente de IA, el siguiente paso es entender el ecosistema de herramientas existentes en el mercado para su implementación. El mismo es dinámico y cambia rápidamente (año 2025). En cualquier caso, pueden organizarse en los siguientes grupos:</p>
+<h3 id="herramientas-listas-para-usar">Herramientas "listas para usar"</h3>
+<p>Permiten aplicar un sistema agentivo a un problema específico como la programación asistida por IA o la investigación avanzada.</p>
+<p><img alt="" src="../imgs/ag13_3.jpg" /></p>
+<h3 id="herramientas-low-codeno-code">Herramientas "low-code/no-code"</h3>
+<p>Permiten construir flujos de trabajo de una complejidad baja en cuanto a agentividad. Estos agentes serían la próxima generación de herramientas de automatización de flujos de trabajo que se han empleado en los últimos años.</p>
+<p><img alt="" src="../imgs/ag13_4.jpg" /></p>
+<h3 id="frameworks-de-desarrollo-de-agentes">"Frameworks" de desarrollo de agentes</h3>
+<p>Finalmente están los frameworks (herramientas-marco) de desarrollo de agentes de IA que permiten construir sistemas agentivos complejos desde cero. Son los más utilizados por desarrolladores para crear sistemas realmente robustos.</p>
+<p><img alt="" src="../imgs/ag13_5.jpg" /></p>
+<p>Cada conjunto de herramientas ofrece ventajas y desventajas, incluyendo facilidad de uso y nivel de personalización.</p>
+<p><img alt="" src="../imgs/ag13_6.jpg" /></p>
+<h2 id="desarrollar-la-solucion-o-comprarla">Desarrollar la solución o comprarla</h2>
+<p>Como sucede en general con el software, la elección entre desarrollar o comprar depende de diversos factores:</p>
+<ul>
+<li>
+<p>Deberías considerar <strong>comprar herramientas "listas para usar"</strong> si:</p>
+<ul>
+<li>Estás abordando un dominio o caso de uso específico</li>
+<li>Ya existe una solución madura y bien probada en el mercado</li>
+<li>Quieres minimizar la carga de mantenimiento</li>
+</ul>
+</li>
+<li>
+<p>Deberías considerar <strong>comprar plataformas "low-code/no-code"</strong> si:</p>
+<ul>
+<li>Necesitas algo de personalización pero no control total</li>
+<li>Tus flujos de trabajo son moderadamente complejos pero siguen patrones comunes</li>
+<li>Quieres que los usuarios de negocio puedan modificar el agente sin ayuda de ingeniería</li>
+<li>Necesitas integrarte rápidamente con sistemas existentes</li>
+</ul>
+</li>
+<li>
+<p>Deberías <strong>desarrollar una solución propia con "frameworks"</strong> de agentes si:</p>
+<ul>
+<li>El agente debe emplear sistemas que son propietarios</li>
+<li>Estás manejando datos sensibles</li>
+<li>El agente es clave para tu ventaja competitiva</li>
+<li>No existe una solución en el mercado que cumpla tus requisitos especializados</li>
+<li>Necesitas control total sobre el comportamiento y la evolución del agente</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../ag12/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ¿Qué lo hace agentivo?">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                ¿Qué lo hace agentivo?
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../ag21/" class="md-footer__link md-footer__link--next" aria-label="Next: Pensar-Actuar-Observar">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Pensar-Actuar-Observar
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.instant"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
